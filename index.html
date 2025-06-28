@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Harry Potter Fanpage</title>
+  <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'MedievalSharp', cursive;
+      background-color: #1a1a1a;
+      color: #f0e6d2;
+      text-align: center;
+    }
+
+    header {
+      padding: 2rem;
+      background-color: #000;
+      border-bottom: 4px solid #ffc500;
+    }
+
+    header img {
+      width: 150px;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-top: 1rem;
+    }
+
+    nav {
+      margin-top: 2rem;
+    }
+
+    nav a {
+      color: #ffc500;
+      margin: 0 1rem;
+      text-decoration: none;
+      font-size: 1.2rem;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      padding: 3rem;
+    }
+
+    section {
+      margin: 4rem 0;
+    }
+
+    .spell {
+      display: inline-block;
+      margin: 1rem;
+      padding: 1rem;
+      border: 1px solid #ffc500;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .spell:hover {
+      background-color: #333;
+      box-shadow: 0 0 15px #ffc500;
+      transform: scale(1.05);
+    }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+
+    .character {
+      width: 150px;
+      text-align: center;
+    }
+
+    .character img {
+      width: 100%;
+      border-radius: 10px;
+      transition: transform 0.3s;
+    }
+
+    .character img:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 10px #ffc500;
+    }
+
+    #quiz-result {
+      margin-top: 1rem;
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #ffc500;
+    }
+
+    footer {
+      background-color: #000;
+      color: #ccc;
+      padding: 1rem;
+      font-size: 0.9rem;
+      border-top: 1px solid #333;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Hogwarts_WLM_logo.svg" alt="Hogwarts Crest">
+    <h1>Welcome to the Harry Potter Fanpage</h1>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#quiz">Sorting Hat Quiz</a>
+      <a href="#spells">Spells</a>
+      <a href="#characters">Characters</a>
+      <a href="#gallery">Gallery</a>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <h2>✨ Mischief Managed ✨</h2>
+      <p>This is your one-stop magical pitstop for everything Harry Potter! Whether you're a brave Gryffindor, a clever Ravenclaw, a loyal Hufflepuff, or a cunning Slytherin — this is your home.</p>
+      <p>Check back soon for character bios, magical trivia, and fan art!</p>
+    </section>
+
+    <section id="quiz">
+      <h2>🎩 Sorting Hat Quiz</h2>
+      <form id="sorting-form">
+        <p>Choose the option that describes you best:</p>
+        <select name="q1">
+          <option value="">Select one...</option>
+          <option value="G">Brave and bold</option>
+          <option value="R">Witty and wise</option>
+          <option value="H">Kind and loyal</option>
+          <option value="S">Ambitious and cunning</option>
+        </select><br><br>
+        <select name="q2">
+          <option value="">Pick another one...</option>
+          <option value="G">Adventurous</option>
+          <option value="R">Creative</option>
+          <option value="H">Friendly</option>
+          <option value="S">Leader</option>
+        </select><br><br>
+        <button type="submit">Reveal My House</button>
+      </form>
+      <div id="quiz-result"></div>
+    </section>
+
+    <section id="spells">
+      <h2>🔮 Spells</h2>
+      <div class="spell">Expelliarmus – Disarming Charm</div>
+      <div class="spell">Lumos – Light at your wand tip</div>
+      <div class="spell">Alohomora – Unlocks doors</div>
+      <div class="spell">Expecto Patronum – Summons a Patronus</div>
+    </section>
+
+    <section id="characters">
+      <h2>🧙‍♂️ Characters</h2>
+      <div class="gallery">
+        <div class="character">
+          <img src="https://upload.wikimedia.org/wikipedia/en/d/d7/Harry_Potter_character_poster.jpg" alt="Harry Potter">
+          <p>Harry Potter</p>
+        </div>
+        <div class="character">
+          <img src="https://upload.wikimedia.org/wikipedia/en/d/d3/Hermione_Granger_poster.jpg" alt="Hermione Granger">
+          <p>Hermione Granger</p>
+        </div>
+        <div class="character">
+          <img src="https://upload.wikimedia.org/wikipedia/en/5/5e/Ron_Weasley_poster.jpg" alt="Ron Weasley">
+          <p>Ron Weasley</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery">
+      <h2>🖼️ Gallery</h2>
+      <p>More character art, Hogwarts shots, and magical memes coming soon!</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>Made with Felix Felicis & Nerd Energy ⚡ | Not affiliated with J.K. Rowling or Warner Bros.</p>
+  </footer>
+
+  <script>
+    document.getElementById('sorting-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const answers = [...this.querySelectorAll('select')].map(s => s.value);
+      const counts = { G: 0, R: 0, H: 0, S: 0 };
+      answers.forEach(a => { if (a) counts[a]++; });
+      const house = Object.keys(counts).reduce((a, b) => counts[a] >= counts[b] ? a : b);
+      const names = { G: "Gryffindor", R: "Ravenclaw", H: "Hufflepuff", S: "Slytherin" };
+      document.getElementById('quiz-result').textContent = `You're a proud ${names[house]}! 🦁🦅🦡🐍`;
+    });
+  </script>
+</body>
+</html>
